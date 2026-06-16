@@ -23,7 +23,7 @@ Rather than competing directly with Chrome or Firefox, Ravix serves as a learnin
 
 | Browser                      | Tab Manager               |
 | ---------------------------- | ------------------------- |
-| ![](screenshots/browser.png) | ![](screenshots/tabs.png) |
+| ![](screenshots/home.png) | ![](screenshots/tabs.png) |
 
 | Extensions                      | Power Tools                      |
 | ------------------------------- | -------------------------------- |
