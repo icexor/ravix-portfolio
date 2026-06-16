@@ -176,6 +176,15 @@ The biggest long-term challenge was providing advanced functionality without ove
 
 ---
 
+## Project Metrics
+
+- 6+ months of active development
+- 30,000+ lines of code
+- 10+ implemented features
+- 20+ core modules
+- Active beta testing program
+---
+
 ## Screenshots
 
 | Browser                      | Tab Manager               |
