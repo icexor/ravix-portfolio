@@ -2,12 +2,24 @@
 
 > Fast, Private, Extensible — a power-user Android browser built on GeckoView (Firefox engine).
 
-⚠️ **Status:** Active hobby project / experimental browser.
+⚠️ **Status:** Active beta project focused on browser architecture, privacy features, and power-user tooling.
 
 Ravix is a custom Android browser written in Kotlin and powered by Mozilla's GeckoView runtime. The project started as a personal exploration of browser architecture, extension systems, privacy tooling, and advanced Android development.
 
 Rather than competing directly with Chrome or Firefox, Ravix serves as a learning platform for experimenting with browser technologies while implementing features commonly requested by power users, including WebExtensions, userscripts, advanced tab management, privacy controls, and developer tools.
 
+## Architecture
+
+Ravix follows a layered architecture centered around GeckoView.
+
+- **UI Layer** handles browser interaction, tab management, settings, downloads, and extension management.
+- **Application Layer** coordinates browser state through ViewModels, repositories, and session management.
+- **Browser Engine Layer** integrates GeckoView for rendering, navigation, tab lifecycles, and extension execution.
+- **Security Layer** provides encrypted storage, biometric authentication, and breach checking.
+- **Extension Runtime** supports WebExtensions and Greasemonkey-style userscripts.
+- **Persistence Layer** stores browser state, history, bookmarks, credentials, and settings using Room and SQLCipher.
+- **System Integration Layer** connects Android Autofill, Downloads, Notifications, Billing, and Crash Reporting.
+- 
 ## Highlights
 
 * Firefox-based rendering via GeckoView
@@ -114,19 +126,7 @@ The project continues to evolve as a platform for learning and experimentation.
 - Google Play Billing (billing-ktx 8.0.0) subscription gate
 - Ko-fi / Patreon donation integration for one-time supporters
 - `PremiumGate` utility that checks subscription state before gating Pro features
-
-## Architecture
-
-Ravix follows a layered architecture centered around GeckoView.
-
-- **UI Layer** handles browser interaction, tab management, settings, downloads, and extension management.
-- **Application Layer** coordinates browser state through ViewModels, repositories, and session management.
-- **Browser Engine Layer** integrates GeckoView for rendering, navigation, tab lifecycles, and extension execution.
-- **Security Layer** provides encrypted storage, biometric authentication, and breach checking.
-- **Extension Runtime** supports WebExtensions and Greasemonkey-style userscripts.
-- **Persistence Layer** stores browser state, history, bookmarks, credentials, and settings using Room and SQLCipher.
-- **System Integration Layer** connects Android Autofill, Downloads, Notifications, Billing, and Crash Reporting.
-- 
+  
 ---
 
 ## Tech Stack
