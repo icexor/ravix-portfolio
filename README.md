@@ -27,7 +27,7 @@ Rather than competing directly with Chrome or Firefox, Ravix serves as a learnin
 
 | Extensions                      | Power Tools                      |
 | ------------------------------- | -------------------------------- |
-| ![](screenshots/extensions.png) | ![](screenshots/power-tools.png) |
+| ![](screenshots/extensions.png) | ![](screenshots/powertools.png) |
 
 ## Why I Built It
 
