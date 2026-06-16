@@ -115,6 +115,18 @@ The project continues to evolve as a platform for learning and experimentation.
 - Ko-fi / Patreon donation integration for one-time supporters
 - `PremiumGate` utility that checks subscription state before gating Pro features
 
+## Architecture
+
+Ravix follows a layered architecture centered around GeckoView.
+
+- **UI Layer** handles browser interaction, tab management, settings, downloads, and extension management.
+- **Application Layer** coordinates browser state through ViewModels, repositories, and session management.
+- **Browser Engine Layer** integrates GeckoView for rendering, navigation, tab lifecycles, and extension execution.
+- **Security Layer** provides encrypted storage, biometric authentication, and breach checking.
+- **Extension Runtime** supports WebExtensions and Greasemonkey-style userscripts.
+- **Persistence Layer** stores browser state, history, bookmarks, credentials, and settings using Room and SQLCipher.
+- **System Integration Layer** connects Android Autofill, Downloads, Notifications, Billing, and Crash Reporting.
+- 
 ---
 
 ## Tech Stack
@@ -176,7 +188,6 @@ app/src/main/
 └── cpp/
     └── ravix_native.cpp   # NDK bridge
 ```
-
 ---
 
 ## License
