@@ -19,7 +19,7 @@ Ravix follows a layered architecture centered around GeckoView.
 - **Extension Runtime** supports WebExtensions and Greasemonkey-style userscripts.
 - **Persistence Layer** stores browser state, history, bookmarks, credentials, and settings using Room and SQLCipher.
 - **System Integration Layer** connects Android Autofill, Downloads, Notifications, Billing, and Crash Reporting.
-- 
+  
 ## Highlights
 
 * Firefox-based rendering via GeckoView
@@ -30,6 +30,151 @@ Ravix follows a layered architecture centered around GeckoView.
 * Biometric-secured password manager
 * Media downloading with yt-dlp integration
 * Developer and power-user tooling
+
+---
+
+# Key Challenges During Ravix Browser Development
+
+## 1. GeckoView Integration
+Building on GeckoView provided powerful browser capabilities but introduced challenges around documentation gaps, API changes between releases, and browser-specific behaviors that differ from Chromium-based browsers.
+
+### Impact
+- Frequent adaptation to GeckoView updates
+- Compatibility issues with extensions and web APIs
+- Increased debugging complexity
+
+---
+
+## 2. Extension & Userscript Support
+Supporting WebExtensions, Tampermonkey, and userscripts required creating reliable communication between browser tabs, injected scripts, and background processes.
+
+### Impact
+- Script injection timing issues
+- Site-specific compatibility problems
+- Security and permission management challenges
+
+---
+
+## 3. PowerTab Architecture
+Keeping selected tabs alive while the app is minimized or the device is locked required balancing persistence, performance, and Android system restrictions.
+
+### Impact
+- Background process limitations
+- Memory management challenges
+- Battery consumption considerations
+
+---
+
+## 4. Android Resource Constraints
+Unlike desktop browsers, Android devices have limited memory and aggressive process management.
+
+### Impact
+- Tab unloading and restoration logic
+- Preventing crashes on low-memory devices
+- Optimizing startup and navigation performance
+
+---
+
+## 5. Performance Monitoring Tools
+Implementing developer-focused tools such as FPS monitoring, storage inspection, and console viewing required gathering runtime data without affecting browser performance.
+
+### Impact
+- Avoiding performance overhead
+- Real-time data collection challenges
+- Cross-process communication complexity
+
+---
+
+## 6. Privacy & Security Hardening
+Enhancing privacy while maintaining website compatibility required careful tuning of browser preferences and protection mechanisms.
+
+### Impact
+- Fingerprinting resistance trade-offs
+- Site breakage risks
+- Maintaining user experience
+
+---
+
+## 7. Browser UI Complexity
+Managing tabs, groups, PowerTabs, inactive tabs, downloads, extensions, and power tools within a mobile-first interface required significant UX iteration.
+
+### Impact
+- Screen space limitations
+- Navigation complexity
+- Discoverability of advanced features
+
+---
+
+## 8. State Management
+Browser applications maintain large amounts of state including tabs, sessions, permissions, downloads, scripts, and settings.
+
+### Impact
+- Session restoration reliability
+- Data consistency across app restarts
+- Preventing state corruption
+
+---
+
+## 9. Subscription & Licensing System
+Implementing Ravix Pro required integrating Play Billing while ensuring premium features remained secure and accessible.
+
+### Impact
+- Purchase validation
+- License synchronization
+- Handling edge cases such as refunds and account changes
+
+---
+
+## 10. Compatibility Testing
+Modern websites behave differently across devices, Android versions, and browser engines.
+
+### Impact
+- Continuous testing effort
+- Website-specific fixes
+- Regression prevention
+
+---
+
+## 11. Rapid Feature Growth
+As Ravix evolved from a standard browser into a power-user platform, new systems introduced dependencies across multiple components.
+
+### Impact
+- Increased maintenance burden
+- Feature interaction conflicts
+- Growing architectural complexity
+
+---
+
+## 12. Balancing Power Features with Simplicity
+The biggest long-term challenge was providing advanced functionality without overwhelming regular users.
+
+### Impact
+- Keeping default experience simple
+- Hiding complexity behind Power Tools
+- Maintaining accessibility for all user types
+
+---
+
+## Tech Stack
+
+| Layer | Library / Tool |
+|---|---|
+| Browser engine | GeckoView (Mozilla Firefox) |
+| Language | Kotlin 2.1 / JVM 17 |
+| Min SDK | Android 8.0 (API 26) |
+| Target SDK | Android 16 (API 36) |
+| Architecture | Single-Activity + multiple feature Activities, LiveData/ViewModel |
+| Database | Room 2.7.1 + SQLCipher AES-256 |
+| DI / KSP | KSP (Room compiler) |
+| Image loading | Glide 4.16 |
+| Video download | youtubedl-android 0.18.1 (yt-dlp + FFmpeg + Python runtime) |
+| Billing | Google Play Billing 8.0 |
+| Crash reporting | Firebase Crashlytics |
+| Security | AndroidX Security Crypto, AndroidX Biometric, HIBP |
+| NDK | CMake 4.1 / NDK 30 (arm64-v8a) |
+| Build | Gradle 8, AGP 8.7, KSP |
+
+---
 
 ## Screenshots
 
@@ -127,27 +272,6 @@ The project continues to evolve as a platform for learning and experimentation.
 - Ko-fi / Patreon donation integration for one-time supporters
 - `PremiumGate` utility that checks subscription state before gating Pro features
   
----
-
-## Tech Stack
-
-| Layer | Library / Tool |
-|---|---|
-| Browser engine | GeckoView (Mozilla Firefox) |
-| Language | Kotlin 2.1 / JVM 17 |
-| Min SDK | Android 8.0 (API 26) |
-| Target SDK | Android 16 (API 36) |
-| Architecture | Single-Activity + multiple feature Activities, LiveData/ViewModel |
-| Database | Room 2.7.1 + SQLCipher AES-256 |
-| DI / KSP | KSP (Room compiler) |
-| Image loading | Glide 4.16 |
-| Video download | youtubedl-android 0.18.1 (yt-dlp + FFmpeg + Python runtime) |
-| Billing | Google Play Billing 8.0 |
-| Crash reporting | Firebase Crashlytics |
-| Security | AndroidX Security Crypto, AndroidX Biometric, HIBP |
-| NDK | CMake 4.1 / NDK 30 (arm64-v8a) |
-| Build | Gradle 8, AGP 8.7, KSP |
-
 ---
 
 ## Project Structure
